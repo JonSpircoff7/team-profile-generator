@@ -1,8 +1,8 @@
 const inquirer = require('inquirer')
 // const htmlGenerator = require()
 
-inquirer
-    .prompt([
+const promptUser = () => {
+    return inquirer.prompt([
     {
         name: ,
         type: 'input',
@@ -53,13 +53,28 @@ inquirer
 
     }
 ])
-.then((answers) => {
-    console.log(answers)
+};
 
-});
+const generateHTML = ({ engineer, intern, manager}) =>
+  `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>Document</title>
+</head>
+<body>
+  </div>
+</div>
+</body>
+</html>`;
 
-    function init(){
-
+    const init = () => {
+    promptUser()
+        .then((answer) => writeFile('index.html', generateHTML(answers)))
+        .then(() => console.log('Successfully created index.html'))
+        .catch((err) => console.log(err))
 
     }
 
