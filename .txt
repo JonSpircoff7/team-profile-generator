@@ -1,0 +1,38 @@
+What do I need?
+
+1.  Prompt that asks for basic information
+        -Name   -Employee_role -Social_media //-Fun_fact?
+2.  HTML page that displays user information dynamically
+        -Header with Project Name   
+        -Container that adds employee information into cards
+3.  Classes
+        -Employee
+        -Manager -Crew -Intern
+            /Methods 
+                get_role
+                get_social_media(github)
+                get_email
+                get_name
+                html_forEach
+            
+Prompt
+    -Managers name
+        -ID
+        -Email
+        -Officer_number
+    -List to add engineer || intern
+    -${Role}-
+        -ID
+        -Email
+        -github
+    -Line23
+    If I decide to finish application then my HTML
+    should be generated
+
+
+
+
+    -linked get_role
+    -linked get_email
+    -linked github
+    -
