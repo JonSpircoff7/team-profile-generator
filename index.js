@@ -1,7 +1,16 @@
-const inquirer = require('inquirer')
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const inquirer = require('inquirer');
+const path = require('path');
+const fs = require('fs');
 
-const {writeFile} = require('fs').promises;
+const DIST_DIR = path.resolve(__dirname, 'dist');
+const distPath = path.join(DIST_DIR, 'team.html');
 
+const render = require('./src/page-template.js');
+
+const teamMembers = [];
 
 // Prompt the questions
 const promptUser = () => {
@@ -58,20 +67,6 @@ const promptUser = () => {
 ])
 };
 
-const generateHTML = ({ engineer, intern, manager}) =>
-  `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <title>Team Profile Generator</title>
-</head>
-<body>
-  </div>
-</div>
-</body>
-</html>`;
 
 // Create the HTML file with the data received
     const init = () => {
