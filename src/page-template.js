@@ -25,7 +25,7 @@ const generateTeam = (team) => {
         <ul class="list-group list-group-flush">
           <li class="list-group-item">${answer.id}</li>
           <li class="list-group-item">${answer.email}</li>
-          <li class="list-group-item">${answer.officerNumber}</li>
+          <li class="list-group-item">${answer.github}</li>
         </ul>
       </div>
 
@@ -42,13 +42,14 @@ const generateTeam = (team) => {
     <ul class="list-group list-group-flush">
       <li class="list-group-item">${answer.id}</li>
       <li class="list-group-item">${answer.email}</li>
-      <li class="list-group-item">${answer.officerNumber}</li>
+      <li class="list-group-item">${answer.school}</li>
     </ul>
   </div>
         `;
   };
 
   // use the team array to generate pieces of html based on the employee role
+  team.push()
 };
 
 module.exports = (team) => {
