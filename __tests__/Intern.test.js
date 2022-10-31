@@ -1,14 +1,19 @@
-const intern = require('../lib/Intern')
+const Intern = require("../lib/Intern");
 
-test('Intern', () => {
+test("Should set school", () => {
+  const school = "PSL";
+  const intern = new Intern("Jon", "505", "email", school);
+  expect(intern.school).toBe(school);
+});
 
-})
+test("returns role", () => {
+  const role = "Intern";
+  const intern = new Intern("Jon", "505", "email", "PSL");
+  expect(intern.getRole()).toBe(role);
+});
 
-
-test('returns role', () => {
-
-})
-
-test('returns school name', () => {
-    
-})
+test("returns school name", () => {
+  const school = "PSL";
+  const intern = new Intern("Jon", 505, "email", school);
+  expect(intern.getSchool()).toBe(school);
+});
