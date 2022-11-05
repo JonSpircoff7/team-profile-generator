@@ -1,9 +1,10 @@
-const Manager = require("./lib/Manager");
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+//Library
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
 const DIST_DIR = path.resolve(__dirname, "dist");
 const distPath = path.join(DIST_DIR, "team.html");
@@ -14,121 +15,82 @@ const teamMembers = [];
 
 // Prompt the questions
 const promptUser = () => {
-  return inquirer
-    .prompt([
-      {
-        name: "name",
-        type: "input",
-        message: "Please enter your Manager's name",
-        validate: (value) => {
-          if (value) {
-            return true;
-          }
-          console.log("Incorrect response");
-        },
+  return inquirer.prompt([
+    {
+      name: "addMember",
+      type: "list",
+      message: "Would you like to add a new member to your team?",
+      choices: ["Yes", "No"],
+      validate: (answers) => {
+        if (answers) {
+          return true;
+        }
+        return "incorrect answer";
       },
-      {
-        name: "id",
-        type: "input",
-        message: "What is your employee ID?",
-        validate: (value) => {
-          if (value) {
-            return true;
-          }
-          console.log("Incorrect response");
-        },
-      },
-      {
-        name: "email",
-        type: "input",
-        message: "What is your email?",
-        validate: (value) => {
-          if (value) {
-            return true;
-          }
-          console.log("Incorrect response");
-        },
-      },
-      {
-        name: "officenumber",
-        type: "input",
-        message: "What is your office number?",
-        validate: (value) => {
-          if (value) {
-            return true;
-          }
-          console.log("Incorrect response");
-        },
-      },
-    ])
-    .then((answers) => {
-      console.log(answers);
-      teamPrompt();
-    });
+    },
+  ]);
 };
 
-//Prompt user to create their team members or finish and build HTML
-const teamPrompt = () => {
-  return inquirer
-    .prompt([
-      {
-        name: "build_team",
-        type: "list",
-        message: "Choose an option to continue",
-        choices: ["Engineer", "Intern", "Finish building"],
-        validate: (value) => {
-          if (value) {
-            return true;
-          }
-          console.log("Incorrect response");
-        },
+const addInfo = () => {
+  return inquirer.prompt([
+    {
+      name: "name",
+      type: "input",
+      message: "Please enter your name",
+      validate: (value) => {
+        if (!value) {
+          console.log("Please enter your name");
+        }
+        return true;
       },
-    ])
-    .then((answers) => {
-      if (answers.build_team === "Engineer") {
-        teamEngineer();
-      } else if (answers.build_team === "Intern") {
-        teamIntern();
-      } else console.log("how the hell do I do this?:)");
-    });
+    },
+    {
+      name: "id",
+      type: "input",
+      message: "Please enter your ID",
+      validate: (value) => {
+        if (!value) {
+          console.log("Please enter your ID");
+        }
+        return true;
+      },
+    },
+    {
+      name: "email",
+      type: "input",
+      message: "Please enter your email",
+      validate: (value) => {
+        if (!value) {
+          console.log("Please enter your email");
+        }
+        return true;
+      },
+    },
+    {
+      name: "role",
+      type: "input",
+      message: "Please enter your role",
+      validate: (value) => {
+        switch (value) {
+          case "Manager":
+            console.log("manager");
+            break;
+          case "Intern":
+            return addIntern();
+            break;
+          case "Engineer":
+            return addEngineer();
+            break;
+        }
+      },
+    },
+  ]);
 };
+
 //Prompt user to build engineer
-const teamEngineer = () => {
+const addEngineer = () => {
   return inquirer
     .prompt([
-      {
-        name: "name",
-        type: "input",
-        message: "Please enter the Engineer's name",
-        validate: (value) => {
-          if (value) {
-            return true;
-          }
-          console.log("Incorrect response");
-        },
-      },
-      {
-        name: "id",
-        type: "input",
-        message: "Enter an employee ID",
-        validate: (value) => {
-          if (value) {
-            return true;
-          }
-          console.log("Incorrect response");
-        },
-      },
-      {
-        name: "email",
-        type: "input",
-        message: "Enter your email?",
-        validate: (value) => {
-          if (value) {
-            return true;
-          }
-          console.log("Incorrect response");
-        },
-      },
       {
         name: "github",
         type: "input",
@@ -142,53 +104,20 @@ const teamEngineer = () => {
       },
     ])
     .then((answers) => {
-      const engineer1 = new Engineer(
+      const newEngineer = new Engineer(
         answers.name,
         answers.id,
         answers.email,
         answers.github
       );
-
+      teamMembers.push(newEngineer);
       teamPrompt();
     });
 };
 //Prompt user to build Intern
-const teamIntern = () => {
+const addIntern = () => {
   return inquirer
     .prompt([
-      {
-        name: "name",
-        type: "input",
-        message: "Please enter the Intern's name",
-        validate: (value) => {
-          if (value) {
-            return true;
-          }
-          console.log("Incorrect response");
-        },
-      },
-      {
-        name: "id",
-        type: "input",
-        message: "Enter an employee ID",
-        validate: (value) => {
-          if (value) {
-            return true;
-          }
-          console.log("Incorrect response");
-        },
-      },
-      {
-        name: "email",
-        type: "input",
-        message: "Enter your email?",
-        validate: (value) => {
-          if (value) {
-            return true;
-          }
-          console.log("Incorrect response");
-        },
-      },
       {
         name: "github",
         type: "input",
@@ -202,21 +131,21 @@ const teamIntern = () => {
       },
     ])
     .then((answers) => {
-      const intern1 = new Intern(
+      const newIntern = new Intern(
         answers.name,
         answers.id,
         answers.email,
         answers.school
       );
+      teamMembers.push(newIntern);
 
       teamPrompt();
     });
 };
 
 //Create the HTML file with the data received
-const init = () => {
-  generateTeam()
-    .then((answers) => writeFile("index.html", generateHTML(answers)))
+const generate = () => {
+  fs.writeFile("index.html", generateTeam(teamMembers), "utf-8")
     .then(() => console.log("Successfully created index.html"))
     .catch((err) => console.log(err));
 };

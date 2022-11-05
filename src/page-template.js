@@ -49,9 +49,37 @@ const generateTeam = (team) => {
   };
 
   // use the team array to generate pieces of html based on the employee role
-  team.push()
+  teamMembers.push();
 };
 
-module.exports = (team) => {
+module.exports = (teamMembers) => {
   // template literal - html body that calls the generate team function
+  `<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous"
+      />
+      <link rel="stylesheet" href="style.css" />
+      <title>Team Generator</title>
+    </head>
+    <body>
+      <header>
+        <nav class="navbar bg-light">
+          <div class="container-fluid red">
+            <a class="mx-auto navbar-brand" href="#"> <h1>Team Generator</h1> </a>
+          </div>
+        </nav>
+      </header>
+      <main>
+        
+      </main>
+    </body>
+  </html>`;
 };
