@@ -1,5 +1,18 @@
 const Engineer = require("../lib/Engineer");
 
+describe("Engineer", () => {
+  const mockEngineer = {
+  name: 'Jonathan',
+  id: 76,
+  email: "Spircoff_j@yahoo.com",
+  github: 'testGithub.github.io'
+  };
+  test('Should create a instance of the engineer class', () => {
+    const mockEng = new Engineer(mockEngineer)
+    expect(mockEng).toBe(Engineer);
+});
+});
+
 test("Should set github value", () => {
   const github = "testGithub.github.io";
   const engineer = new Engineer("name", "id", "email", github);
