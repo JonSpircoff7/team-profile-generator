@@ -11,7 +11,7 @@ In this project, we use node js and object oriented programming fundamentals to 
 <li><a href="#link">Link</a></li>
 <li><a href="#screenshots">Screenshots</a></li>
 <li><a href="#roadmap">Roadmap</a></li>
-<li><a href="#question">Questions</a></li>
+<li><a href="#questions">Questions</a></li>
 <li><a href="#feedback">Feedback</a></li>
 <li><a href="#license">License</a></li>
 
@@ -47,13 +47,7 @@ Use the terminal to run this application, type in "Node index.js" and answer the
 
 https://jonspircoff7.github.io/team-profile-generator/
 
-## Screenshots
 
-<video width="320" height="240" controls>
-  <source src="dist\Untitled_ Nov 7, 2022 11_25 PM.webm" type="video/mp4">
- 
-Your browser does not support the video tag.
-</video>
 ## Roadmap
 
     Any future updates will be listed here for this application.
@@ -74,3 +68,11 @@ Your browser does not support the video tag.
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+## Screenshots
+
+<video width="320" height="240" controls>
+  <source src="dist\Untitled_ Nov 7, 2022 11_25 PM.webm" type="video/mp4">
+ 
+Your browser does not support the video tag.
+</video>
