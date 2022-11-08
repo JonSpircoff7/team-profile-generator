@@ -22,13 +22,13 @@ This is an application created for UCF bootcamp students to learn how to use Nod
 ## Installation
 
 Please download the following to properly run this application
-    -nodejs
-    -VsCode
-    -Gitbash for a simple terminal
+-nodejs
+-VsCode
+-Gitbash for a simple terminal
 
 ## Usage
 
-Please check for requirements to run this application. 
+Please check for requirements to run this application.
 Use the terminal to run this application, type in "Node index.js" and answer the prompts. After you build your team, click on the finish building option. This will create a new HTML page with all of the information that you typed in. Please refer to the <strong>Questions</strong> for further assistance.
 
 ## Technology
@@ -49,17 +49,20 @@ https://jonspircoff7.github.io/team-profile-generator/
 
 ## Screenshots
 
-![HTML webpage titled “My Team” features five boxes listing employee names, titles, and other key info.](/10-object-oriented-programming-homework-demo.png)
-
-
+<video width="320" height="240" controls>
+  <source src="dist\Untitled_ Nov 7, 2022 11_25 PM.webm" type="video/mp4">
+ 
+Your browser does not support the video tag.
+</video>
 ## Roadmap
 
-    Any future updates will be listed here for this application. 
+    Any future updates will be listed here for this application.
     - Create a mobile application with user inputs on the application itself.
     - Create a more responsive layout with custom CSS and html.
     - Add more functionality to the site to accept user information and options.
 
 ## Questions
+
     #### If you have any questions please reach out at the following
     -Spircoffj@gmail.com
     -jonspircoff7.github.io
