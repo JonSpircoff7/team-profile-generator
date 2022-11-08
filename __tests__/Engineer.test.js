@@ -2,15 +2,20 @@ const Engineer = require("../lib/Engineer");
 
 describe("Engineer", () => {
   const mockEngineer = {
-  name: 'Jonathan',
-  id: 76,
-  email: "Spircoff_j@yahoo.com",
-  github: 'testGithub.github.io'
+    name: "Jonathan",
+    id: 76,
+    email: "Spircoff_j@yahoo.com",
+    github: "testGithub.github.io",
   };
-  test('Should create a instance of the engineer class', () => {
-    const mockEng = new Engineer(mockEngineer)
-    expect(mockEng).toBe(Engineer);
-});
+  test("Should create a instance of the engineer class", () => {
+    const mockEng = new Engineer(
+      mockEngineer.name,
+      mockEngineer.id,
+      mockEngineer.email,
+      mockEngineer.github
+    );
+    expect(mockEng).toEqual(mockEngineer);
+  });
 });
 
 test("Should set github value", () => {

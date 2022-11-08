@@ -1,15 +1,14 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const path = require("path");
 
 //Library
+
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const DIST_DIR = path.resolve(__dirname, "dist");
-const distPath = path.join(DIST_DIR, "team.html");
-const generateTeam = require("./src/generateTeam");
-const teamMembers = [];
+const generateHTML = require("./src/generateHTML");
+
+const team = [];
 
 // Prompt the user to addMember
 const promptUser = () => {
@@ -25,7 +24,9 @@ const promptUser = () => {
     .then((answers) => {
       if (answers.addMember === "Yes") {
         return addRole();
-      } else console.log(teamMembers);
+      } else if (answers.addMember === "No") {
+        createHTML(team);
+      } else console.log("this");
     });
 };
 
@@ -101,13 +102,13 @@ const addEngineer = () => {
       },
     ])
     .then((answers) => {
-      const newEngineer = new Engineer(
+      const engineer = new Engineer(
         answers.name,
         answers.id,
         answers.email,
         answers.github
       );
-      teamMembers.push(newEngineer);
+      team.push(engineer);
       promptUser();
     });
 };
@@ -160,13 +161,13 @@ const addIntern = () => {
       },
     ])
     .then((answers) => {
-      const newIntern = new Intern(
+      const intern = new Intern(
         answers.name,
         answers.id,
         answers.email,
         answers.school
       );
-      teamMembers.push(newIntern);
+      team.push(intern);
       promptUser();
     });
 };
@@ -220,24 +221,25 @@ const addManager = () => {
     ])
     .then((answers) => {
       console.log(answers);
-      const newManager = new Manager(
+      const manager = new Manager(
         answers.name,
         answers.id,
         answers.email,
         answers.officeNumber
       );
-      teamMembers.push(newManager);
+      team.push(manager);
       promptUser();
     });
 };
 
-//Create the HTML file with the data received
-const init = (teamMembers) => {
-  fs.writeFile(distPath, generateTeam(teamMembers), "utf-8", () =>
-    console.log("Successfully created index.html")
-  ).catch((err) => console.log(err));
-};
+// //Create the HTML file with the data received
 
-init();
+const createHTML = () => {
+  let generated = generateHTML(team);
+  console.log(generated);
+  fs.writeFile("dist/index.html", generateHTML(team), () =>
+    console.log("Successfully created index.html")
+  );
+};
 
 promptUser();
